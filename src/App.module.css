@@ -1,0 +1,78 @@
+/* src/App.module.css (ou seu arquivo de estilos para sugestões) */
+
+/* Estilos para o contêiner principal do app, se tiver */
+.app-container {
+  position: relative; /* É importante que o pai da suggestion-box seja relative */
+  min-height: 100vh; /* Garante que o container ocupe toda a altura da viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para o contêiner das sugestões */
+.suggestion-box {
+  position: absolute; /* Posição absoluta em relação ao .app-container */
+  top: 60px; /* **AJUSTE AQUI!** Altura do seu Header + espaçamento */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centralizar perfeitamente */
+  width: 300px; /* **AJUSTE AQUI!** Mesma largura do seu input de busca no Header.module.css */
+  
+  background-color: #2a2a30; /* Fundo escuro */
+  border: 1px solid #4a4a50; /* Borda sutil */
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Sombra suave */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  max-height: 250px; /* Altura máxima para rolagem */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical se o conteúdo exceder */
+  
+  /* Estilos para o scrollbar (opcional, para navegadores baseados em WebKit) */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #555;
+}
+
+.suggestion-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.suggestion-box::-webkit-scrollbar-track {
+  background: #555;
+  border-radius: 10px;
+}
+
+.suggestion-box::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #555;
+}
+
+/* Estilos para a lista dentro da caixa de sugestões */
+.suggestion-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos para cada item da sugestão */
+.suggestion-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #e0e0e0; /* Cor do texto */
+  border-bottom: 1px solid #3a3a40; /* Linha divisória */
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none; /* Remove a borda do último item */
+}
+
+.suggestion-item:hover {
+  background-color: #4a4a50; /* Fundo ao passar o mouse */
+  color: #fff; /* Texto ao passar o mouse */
+}
+
+/* Estilos para mensagens de estado (carregando, nenhum encontrado) */
+.suggestion-message {
+  padding: 15px;
+  text-align: center;
+  color: #bbb;
+  font-style: italic;
+}

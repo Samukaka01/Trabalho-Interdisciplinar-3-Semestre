@@ -1,0 +1,84 @@
+.armaModalContent {
+  max-width: 600px; 
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #f0f0f0;
+}
+
+.modalHeader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.armaDisplayIcon {
+  max-width: 80%;
+  height: auto;
+  display: block;
+}
+
+.modalBody {
+  padding-top: 1rem;
+}
+
+.modalBody h2 {
+  color: #72ff54; 
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modalBody p {
+  margin-bottom: 0.5rem;
+}
+
+.modalBody h3,
+.modalBody h4 {
+  color: #72ff54; 
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.modalBody ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modalBody ul li {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.modalBody ul li strong {
+  color: #92e666; 
+}
+
+.damageTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.damageTable th,
+.damageTable td {
+  border: 1px solid #333;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.damageTable th {
+  background-color: #2a2a2a;
+  color: #72ff54; 
+}

@@ -1,0 +1,24 @@
+.searchResultsContainer {
+  padding: 20px;
+}
+
+.searchResultsSubtitle {
+  margin-top: 30px; 
+}
+
+.secondSubtitle {
+  margin-top: 40px; 
+}
+
+.thirdSubtitle {
+  margin-top: 40px; 
+}
+
+
+.searchResultsNoTotalResults {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #888;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}

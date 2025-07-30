@@ -1,0 +1,61 @@
+.mapaModalContent {
+  max-width: 900px; 
+  width: 90%;
+  max-height: 90vh; 
+  overflow-y: auto; 
+  background-color: #1a1a1a; 
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #f0f0f0;
+}
+
+.mapaSplash {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+  border-radius: 8px; 
+  margin-bottom: 1rem; 
+}
+
+.modalHeader {
+  position: relative; 
+  
+}
+
+
+.modalBody {
+    padding-top: 1rem;
+}
+
+.modalBody h2 {
+    color: #72ff54; 
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modalBody p {
+    margin-bottom: 0.5rem;
+}
+
+.modalBody h4 {
+    color: #72ff54; 
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.calloutsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.calloutsList li {
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+.calloutsList li strong {
+    color: #92e666; 
+}

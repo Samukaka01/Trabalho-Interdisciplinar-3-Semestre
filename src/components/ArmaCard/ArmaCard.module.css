@@ -1,0 +1,11 @@
+.armaCardCustom {
+  max-width: 120px; 
+}
+
+
+.armaCardImage {
+  width: 70px; 
+  height: 70px; 
+  object-fit: contain;
+}
+

@@ -1,4 +1,5 @@
-import { IMapa, IMapaCallout } from '../Interfaces/IMapa';
+import { IMapa } from '../Interfaces/IMapa';
+import { IMapaCallout } from '../Interfaces/IMapaCallout';
 import { IPesquisavel } from '../Interfaces/IPesquisavel';
 
 export class Mapa implements IMapa, IPesquisavel {
@@ -6,7 +7,7 @@ export class Mapa implements IMapa, IPesquisavel {
   private _displayName: string;
   private _coordinates: string;
   private _splash: string;
-  private _callouts: IMapaCallout[]; 
+  private _callouts: IMapaCallout[];
   private _assetPath: string;
   private _displayIcon: string; 
   private _listViewIcon: string; 

@@ -1,4 +1,5 @@
 import { IArmaDamageRange } from "./IArmaDamageRange";
+import { IWeaponStats } from "./IWeaponStats";
 
 export interface IArma {
   uuid: string;
@@ -8,17 +9,7 @@ export interface IArma {
   displayIcon: string;
   killStreamIcon: string;
   assetPath: string;
-  weaponStats?: { 
-    fireRate: number;
-    magazineSize: number;
-    runSpeedMultiplier: number;
-    reloadTimeSeconds: number;
-    
-    shotgunPelletCount?: number;
-    wallPenetration: string;
-    firstBulletAccuracy: number;
-    damageRanges: IArmaDamageRange[];
-  };
+  weaponStats?: IWeaponStats
   shopData?: {
     cost: number;
     category: string;

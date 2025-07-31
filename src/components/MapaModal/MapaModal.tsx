@@ -1,7 +1,8 @@
   import React from 'react';
   import styles from './MapaModal.module.css';
   import ModalGenerico from '../ModalGenerico/ModalGenerico';
-  import { IMapa, IMapaCallout } from '../../Interfaces/IMapa';
+  import { IMapa } from '../../Interfaces/IMapa';
+import { IMapaCallout } from '../../Interfaces/IMapaCallout';
 
   interface Props {
     mapa: IMapa;

@@ -1,6 +1,7 @@
 import { IArma } from '../Interfaces/IArma';
 import { IArmaDamageRange } from '../Interfaces/IArmaDamageRange';
 import { IPesquisavel } from '../Interfaces/IPesquisavel';
+import { IWeaponStats } from '../Interfaces/IWeaponStats';
 
 export class Arma implements IArma, IPesquisavel {
   private _uuid: string;
@@ -10,16 +11,7 @@ export class Arma implements IArma, IPesquisavel {
   private _displayIcon: string;
   private _killStreamIcon: string;
   private _assetPath: string;
-  private _weaponStats?: { 
-    fireRate: number;
-    magazineSize: number;
-    runSpeedMultiplier: number;
-    reloadTimeSeconds: number;
-    shotgunPelletCount?: number;
-    wallPenetration: string;
-    firstBulletAccuracy: number;
-    damageRanges: IArmaDamageRange[];
-  };
+  private _weaponStats?: IWeaponStats
   private _shopData?: {
     cost: number;
     category: string;

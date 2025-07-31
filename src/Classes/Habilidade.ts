@@ -6,14 +6,14 @@ export class Habilidade {
   public slot: string;
 
   constructor(data: { uuid?: string; displayName: string; description: string; displayIcon: string; slot: string; }) {
-    this.uuid = data.uuid || this.generateUuid();
+    this.uuid = data.uuid || this.gerarUuid();
     this.displayName = data.displayName;
     this.description = data.description;
     this.displayIcon = data.displayIcon;
     this.slot = data.slot;
   }
 
-  private generateUuid(): string {
+  private gerarUuid(){
     return crypto.randomUUID();
   }
 }

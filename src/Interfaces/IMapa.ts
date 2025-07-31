@@ -1,9 +1,11 @@
+import { IMapaCallout } from "./IMapaCallout";
+
 export interface IMapa {
   uuid: string;
   displayName: string;
   coordinates: string;
   splash: string;
-  callouts: IMapaCallout[]; 
+  callouts: IMapaCallout[];
   assetPath: string;
   
   displayIcon: string; 

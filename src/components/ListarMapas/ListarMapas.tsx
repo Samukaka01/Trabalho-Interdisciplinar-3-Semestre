@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
-import { IMapa } from '../../Interfaces/IMapa';
-import MapaCard from '../MapaCard/MapaCard';
+import styles from './ListarMapas.module.css';
+import { Mapa } from '../../Classes/Mapa'; 
 import MapaModal from '../MapaModal/MapaModal';
-import ListarGenerico from '../ListarGenerico/ListarGenerico';
-
-
-interface Props {
-  mapas: IMapa[];
+import MapaCard from '../MapaCard/MapaCard'; 
+import ListarGenerico from '../ListarGenerico/ListarGenerico'; 
+interface ListarMapasProps {
+  mapas: Mapa[];
 }
 
-const ListaMapas: React.FC<Props> = ({ mapas }) => {
+const ListarMapas: React.FC<ListarMapasProps> = ({ mapas }) => {
+  const [mapaSelecionado, setMapaSelecionado] = useState<Mapa | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [mapaSelecionado, setMapaSelecionado] = useState<IMapa | null>(null);
 
-  function abrirModal(mapa: IMapa) {
+  const abrirModal = (mapa: Mapa) => {
     setMapaSelecionado(mapa);
     setModalOpen(true);
-  }
+  };
 
-  function fecharModal() {
+  const fecharModal = () => {
     setModalOpen(false);
     setMapaSelecionado(null);
-  }
+  };
 
   return (
-    <div>
-      <ListarGenerico<IMapa>
+    <div> 
+      <ListarGenerico<Mapa> 
         items={mapas}
-        renderItem={(mapa) => <MapaCard mapa={mapa} />}
-        onItemClick={abrirModal}
+        renderItem={(mapa) => <MapaCard mapa={mapa} />} 
+        onItemClick={abrirModal} 
+        containerClassName={styles.mapasGrid} 
       />
 
       {modalOpen && mapaSelecionado && (
@@ -38,4 +38,4 @@ const ListaMapas: React.FC<Props> = ({ mapas }) => {
   );
 };
 
-export default ListaMapas;
+export default ListarMapas;

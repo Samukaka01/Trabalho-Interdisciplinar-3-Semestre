@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import AgenteModal from '../AgenteModal/AgenteModal';
 import AgenteCard from '../AgenteCard/AgenteCard';
 import ListarGenerico from '../ListarGenerico/ListarGenerico';
-import { IAgente } from '../../Interfaces/IAgente';
+import { AgenteApiData } from '../../Classes/AgenteApiData';
 
 
 interface Props {
-  agentes: IAgente[];
+  agentes: AgenteApiData[];
 }
 
 const ListaAgentes: React.FC<Props> = ({ agentes }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [agenteSelecionado, setAgenteSelecionado] = useState<IAgente | null>(null);
+  const [agenteSelecionado, setAgenteSelecionado] = useState<AgenteApiData | null>(null);
 
-  function abrirModal(agente: IAgente) {
+  function abrirModal(agente: AgenteApiData) {
     setAgenteSelecionado(agente);
     setModalOpen(true);
   }
@@ -25,7 +25,7 @@ const ListaAgentes: React.FC<Props> = ({ agentes }) => {
 
   return (
     <div>
-      <ListarGenerico<IAgente>
+      <ListarGenerico<AgenteApiData>
         items={agentes}
         renderItem={(agente) => <AgenteCard agente={agente} />}
         onItemClick={abrirModal}

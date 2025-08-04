@@ -1,8 +1,8 @@
-export interface IMapaCallout {
+export type CalloutApiData = {
   regionName: string;
   superRegionName: string;
   location: {
     x: number;
     y: number;
   };
-}
+};

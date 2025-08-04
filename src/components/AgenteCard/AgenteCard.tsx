@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './AgenteCard.module.css'; 
 import CardGenerico from '../CardGenerico/CardGenerico';
-import { IAgente } from '../../Interfaces/IAgente';
+import { AgenteApiData } from '../../Classes/AgenteApiData';
+
 
 
 interface Props {
-  agente: IAgente;
+  agente: AgenteApiData;
 }
 
 const AgenteCard: React.FC<Props> = ({ agente }) => {

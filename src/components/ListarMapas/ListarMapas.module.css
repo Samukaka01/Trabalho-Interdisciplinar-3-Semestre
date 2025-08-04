@@ -1,0 +1,15 @@
+.mapasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  gap: 1.3rem; 
+  justify-content: center;
+  max-width: 1660px; 
+  margin: 0 auto;
+}
+
+@media (max-width: 1700px) { 
+  .mapasGrid {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}

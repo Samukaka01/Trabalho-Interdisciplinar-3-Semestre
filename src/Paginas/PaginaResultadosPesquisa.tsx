@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Mapa } from '../Classes/Mapa';
+import { Mapa } from '../Classes/Mapa'; // Mantenha este import
 import ListaAgentes from '../components/ListaAgentes/ListaAgentes';
 import ListaArmas from '../components/ListarArmas/ListarArmas';
 import ListaMapas from '../components/ListarMapas/ListarMapas';
-import AgenteBase from '../Classes/AgenteBase';
-import { Arma } from '../Classes/Armas';
-import { PesquisavelService } from '../Classes/Pesquisavel';
+import AgenteBase from '../Classes/AgenteBase'; // Mantenha este import
+import { Arma } from '../Classes/Armas'; // Mantenha este import
+// REMOVA a linha abaixo, PesquisavelService não existe mais como classe
+// import { PesquisavelService } from '../Classes/Pesquisavel';
 
 interface PaginaResultadosPesquisaProps {
   todosAgentes: AgenteBase[];
@@ -24,15 +25,18 @@ const PaginaResultadosPesquisa: React.FC<PaginaResultadosPesquisaProps> = ({ tod
 
   useEffect(() => {
     if (termoPesquisa.trim() !== '') {
-      setAgentesFiltrados(PesquisavelService.buscarItens(todosAgentes, termoPesquisa));
-      setArmasFiltradas(PesquisavelService.buscarItens(todasArmas, termoPesquisa));
-      setMapasFiltradas(PesquisavelService.buscarItens(todosMapas, termoPesquisa));
+      // SUBSTITUIÇÃO AQUI:
+      // Usamos o método filter do array, e cada item (agente, arma, mapa)
+      // chama seu próprio método pesquisarPorCriterio.
+      setAgentesFiltrados(todosAgentes.filter(agente => agente.pesquisarPorCriterio(termoPesquisa)));
+      setArmasFiltradas(todasArmas.filter(arma => arma.pesquisarPorCriterio(termoPesquisa)));
+      setMapasFiltradas(todosMapas.filter(mapa => mapa.pesquisarPorCriterio(termoPesquisa)));
     } else {
       setAgentesFiltrados([]);
       setArmasFiltradas([]);
       setMapasFiltradas([]);
     }
-  }, [termoPesquisa, todosAgentes, todasArmas, todosMapas]);
+  }, [termoPesquisa, todosAgentes, todasArmas, todosMapas]); // Dependências do useEffect permanecem as mesmas
 
   return (
     <div className="search-results-container">

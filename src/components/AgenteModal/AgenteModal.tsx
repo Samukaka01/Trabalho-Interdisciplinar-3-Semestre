@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './AgenteModal.module.css'; 
 import ModalGenerico from '../ModalGenerico/ModalGenerico';
-import { IAgente } from '../../Interfaces/IAgente';
+import { AgenteApiData } from '../../Classes/AgenteApiData';
+
 
 interface Props {
-  agente: IAgente;
+  agente: AgenteApiData;
   onClose: () => void;
 }
 

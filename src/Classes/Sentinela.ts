@@ -1,8 +1,8 @@
-import { IAgente } from '../Interfaces/IAgente'; 
+import { AgenteApiData } from './AgenteApiData';
 import AgenteBase from './AgenteBase';
 
 export class Sentinela extends AgenteBase {
-  constructor(data: IAgente) {
+  constructor(data: AgenteApiData) {
     super(data); 
   }
 

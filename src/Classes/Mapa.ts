@@ -1,101 +1,107 @@
-import { IMapa } from '../Interfaces/IMapa';
-import { IMapaCallout } from '../Interfaces/IMapaCallout';
 import { IPesquisavel } from '../Interfaces/IPesquisavel';
+import { MapaApiData } from './MapaApiData'; // Assumindo que CalloutApiData está em MapaApiData.ts
+import { CalloutApiData } from './CalloutApiData';
 
-export class Mapa implements IMapa, IPesquisavel {
+export class Mapa implements IPesquisavel {
   private _uuid: string;
   private _displayName: string;
   private _coordinates: string;
+  private _displayIcon: string;
+  private _listViewIcon: string;
   private _splash: string;
-  private _callouts: IMapaCallout[];
   private _assetPath: string;
-  private _displayIcon: string; 
-  private _listViewIcon: string; 
-  private _xMultiplier: number; 
-  private _yMultiplier: number; 
-  private _xScalarMultiplier: number; 
-  private _yScalarMultiplier: number; 
-  private _narrativeDescription?: string; 
-  private _tacticalDescription?: string; 
+  private _mapUrl: string; 
+  private _xMultiplier: number;
+  private _yMultiplier: number;
+  private _xScalarBias: number;
+  private _yScalarBias: number;
+  private _callouts: CalloutApiData[] | null;
 
-  constructor(data: IMapa) {
+  constructor(data: MapaApiData) {
     this._uuid = data.uuid;
-    this._displayName = data.displayName || ''; 
-    this._coordinates = data.coordinates || ''; 
-    this._splash = data.splash;
-    this._callouts = data.callouts || []; 
-    this._assetPath = data.assetPath;
-    this._narrativeDescription = data.narrativeDescription; 
-    this._tacticalDescription = data.tacticalDescription; 
+    this._displayName = data.displayName || '';
+    this._coordinates = data.coordinates || '';
     this._displayIcon = data.displayIcon;
     this._listViewIcon = data.listViewIcon;
+    this._splash = data.splash;
+    this._assetPath = data.assetPath;
+    this._mapUrl = data.mapUrl; 
     this._xMultiplier = data.xMultiplier;
     this._yMultiplier = data.yMultiplier;
-    this._xScalarMultiplier = data.xScalarMultiplier;
-    this._yScalarMultiplier = data.yScalarMultiplier;
+    this._xScalarBias = data.xScalarBias;
+    this._yScalarBias = data.yScalarBias;
+    this._callouts = data.callouts || [];
   }
 
-  public get uuid(): string { 
-    return this._uuid; 
+
+  public get uuid(): string {
+    return this._uuid;
   }
 
-  public get displayName(): string { 
-    return this._displayName; 
+  public get displayName(): string {
+    return this._displayName;
   }
 
-  public get coordinates(): string { 
-    return this._coordinates; 
+  public get coordinates(): string {
+    return this._coordinates;
   }
 
-  public get splash(): string { 
-    return this._splash; 
+  public get displayIcon(): string {
+    return this._displayIcon;
   }
 
-  public get callouts(): IMapaCallout[] { 
-    return this._callouts; 
-  } 
-
-  public get assetPath(): string { 
-    return this._assetPath; 
+  public get listViewIcon(): string {
+    return this._listViewIcon;
   }
 
-  public get displayIcon(): string { 
-    return this._displayIcon; 
+  public get splash(): string {
+    return this._splash;
   }
 
-  public get listViewIcon(): string { 
-    return this._listViewIcon; 
+  public get assetPath(): string {
+    return this._assetPath;
   }
 
-  public get xMultiplier(): number { 
-    return this._xMultiplier; 
+  public get mapUrl(): string {
+    return this._mapUrl;
   }
 
-  public get yMultiplier(): number { 
-    return this._yMultiplier; 
+  public get xMultiplier(): number {
+    return this._xMultiplier;
   }
 
-  public get xScalarMultiplier(): number { 
-    return this._xScalarMultiplier; 
+  public get yMultiplier(): number {
+    return this._yMultiplier;
   }
 
-  public get yScalarMultiplier(): number { 
-    return this._yScalarMultiplier; 
+  public get xScalarBias(): number {
+    return this._xScalarBias;
   }
 
-  public get narrativeDescription(): string | undefined {
-    return this._narrativeDescription; 
-  } 
+  public get yScalarBias(): number {
+    return this._yScalarBias;
+  }
 
-  public get tacticalDescription(): string | undefined { 
-    return this._tacticalDescription; 
-  } 
+  public get callouts(): CalloutApiData[] | null {
+    return this._callouts;
+  }
 
   public pesquisarPorCriterio(criterio: string): boolean {
-    const lowerCaseCriterio = criterio.toLowerCase().trim(); 
+    const lowerCaseCriterio = criterio.toLowerCase().trim();
     if (lowerCaseCriterio === '') {
       return false;
     }
-    return this.displayName.toLowerCase().includes(lowerCaseCriterio);
+    const nomeMapa = this.displayName.toLowerCase();
+    const coordenadas = this.coordinates.toLowerCase();
+
+    const calloutsNomes = this.callouts
+      ? this.callouts.map(c => c.regionName.toLowerCase()).join(' ')
+      : '';
+
+    return (
+      nomeMapa.includes(lowerCaseCriterio) ||
+      coordenadas.includes(lowerCaseCriterio) ||
+      calloutsNomes.includes(lowerCaseCriterio)
+    );
   }
 }

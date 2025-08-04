@@ -1,72 +1,64 @@
-import { IAgente } from '../Interfaces/IAgente'; 
 import { IPesquisavel } from '../Interfaces/IPesquisavel';
-import { Habilidade } from './Habilidade'; 
-import { IRoleData } from '../Interfaces/IRoleData';
-import { IAbilityData } from '../Interfaces/IAbilityData'; 
+import { Habilidade } from './Habilidade';
+import { Funcao } from './Funcao';
+import { AgenteApiData } from './AgenteApiData';
 
-
-abstract class AgenteBase implements IAgente, IPesquisavel {
+abstract class AgenteBase implements IPesquisavel {
   private _uuid: string;
   private _displayName: string;
   private _description: string;
   private _displayIcon: string;
   private _fullPortrait: string;
   private _background: string;
-  private _abilitiesData: IAbilityData[]; 
-  private _habilidadesInstanciadas: Habilidade[]; 
-  protected _role: IRoleData;
+  protected _role: Funcao;
+  protected _abilities: Habilidade[];
 
-  constructor(data: IAgente) {
+
+  constructor(data: AgenteApiData) {
     this._uuid = data.uuid;
     this._displayName = data.displayName;
     this._description = data.description;
     this._displayIcon = data.displayIcon;
     this._fullPortrait = data.fullPortrait;
     this._background = data.background;
-    this._abilitiesData = data.abilities; 
-    this._habilidadesInstanciadas = data.abilities.map(abilData => new Habilidade(abilData)); 
-    this._role = data.role;
+ 
+    this._role = new Funcao(data.role);
+    this._abilities = data.abilities.map(abilData => new Habilidade(abilData));
   }
 
-  public get uuid(): string { 
-    return this._uuid; 
-  }
+  
+  public get uuid(): string {
+     return this._uuid; 
+    }
+  public get displayName(): string {
+     return this._displayName; 
+    }
+  public get description(): string {
+     return this._description; 
+    }
+  public get displayIcon(): string {
+     return this._displayIcon; 
+    }
+  public get fullPortrait(): string {
+     return this._fullPortrait; 
+    }
+  public get background(): string {
+     return this._background; 
+    }
 
-  public get displayName(): string { 
-    return this._displayName; 
-  }
+  
+  public get role(): Funcao {
+     return this._role; 
+    }
+  public get abilities(): Habilidade[] {
+     return this._abilities; 
+    }
 
-  public get description(): string { 
-    return this._description; 
-  }
-
-  public get displayIcon(): string { 
-    return this._displayIcon; 
-  }
-
-  public get fullPortrait(): string { 
-    return this._fullPortrait; 
-  }
-
-  public get background(): string { 
-    return this._background; 
-  }
-
-  public get abilities(): IAbilityData[] { 
-    return this._abilitiesData; 
-  }
-
-  public get habilidades(): Habilidade[] { 
-    return this._habilidadesInstanciadas; 
-  } 
-
-  public get role(): IRoleData { 
-    return this._role; 
-  }
-
+ 
   public getDescricaoPapel(): string {
     return `Este é um agente do tipo ${this.role.displayName}.`;
   }
+
 
   public abstract getCaracteristicaUnicaDoPapel(): string;
 
@@ -74,10 +66,10 @@ abstract class AgenteBase implements IAgente, IPesquisavel {
   public pesquisarPorCriterio(criterio: string): boolean {
     const lowerCaseCriterio = criterio.toLowerCase().trim();
     if (lowerCaseCriterio === '') {
-      return false; 
+      return false;
     }
     const nomeAgente = this.displayName.toLowerCase();
-    const nomePapel = this.role.displayName.toLowerCase();
+    const nomePapel = this.role.displayName.toLowerCase(); 
 
     return (
       nomeAgente.includes(lowerCaseCriterio) ||

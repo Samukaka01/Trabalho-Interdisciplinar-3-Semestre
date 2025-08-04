@@ -1,5 +1,5 @@
 import { IPesquisavel } from '../Interfaces/IPesquisavel';
-import { MapaApiData } from './MapaApiData'; // Assumindo que CalloutApiData está em MapaApiData.ts
+import { MapaApiData } from './MapaApiData'; 
 import { CalloutApiData } from './CalloutApiData';
 
 export class Mapa implements IPesquisavel {
